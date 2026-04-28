@@ -9,7 +9,13 @@ on:
 
 jobs:
   verify:
+    name: Verify (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["20", "22", "24"]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,14 +25,17 @@ jobs:
         with:
           version: 10
 
-      - name: Setup Node
+      - name: Setup Node ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ matrix.node }}
           cache: pnpm
 
       - name: Install
         run: pnpm install --no-frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm tsc:noemit
 
       - name: Build
         run: pnpm build
@@ -38,4 +47,4 @@ jobs:
         run: pnpm example:doctor
 
       - name: Pack dry-run
-        run: pnpm pack --dry-run
+        run: pnpm pack:check

@@ -49,11 +49,13 @@
     ],
     "scripts": {
         "build": "pnpm clean && tsc -p tsconfig.json",
+        "tsc:noemit": "tsc -b --noEmit",
         "test": "vitest run",
         "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
         "example:doctor": "pnpm build && node dist/cli-doctor.js manifest.json",
         "example:list": "pnpm build && node dist/cli.js list manifest.json --markdown",
         "example:validate": "pnpm build && node dist/cli.js validate-manifest manifest.json",
+        "demo": "pnpm build && node dist/cli.js list manifest.json --markdown && node dist/cli-doctor.js manifest.json",
         "pack:check": "pnpm pack --dry-run"
     },
     "dependencies": {},
@@ -64,6 +66,6 @@
     "author": "@gsknnft",
     "license": "MIT",
     "peerDependencies": {
-        "@gsknnft/skill-safe": "^0.2.1"
+        "@gsknnft/skill-safe": "^0.3.0"
     }
 }

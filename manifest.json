@@ -1,0 +1,34 @@
+{
+  "version": "skill-ledger.manifest.v1",
+  "generatedAt": "2026-04-27T00:00:00.000Z",
+  "sourceId": "example:skill-ledger",
+  "skills": [
+    {
+      "id": "github-pr-review-example",
+      "name": "GitHub PR Review",
+      "source": "github:owner/repo/path/SKILL.md@main",
+      "resolvedUrl": "https://raw.githubusercontent.com/owner/repo/main/path/SKILL.md",
+      "scope": "global",
+      "installedAt": "2026-04-27T00:00:00.000Z",
+      "integrity": "sha256-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "scanner": {
+        "name": "@gsknnft/skill-safe",
+        "version": "0.3.0",
+        "reportVersion": "skill-safe.report.v1"
+      },
+      "scan": {
+        "safeToInstall": true,
+        "recommendedAction": "allow",
+        "severity": "safe",
+        "riskScore": 0,
+        "flagCount": 0,
+        "categories": {},
+        "mappings": {
+          "owasp": [],
+          "mitreAtlas": [],
+          "nistAiRmf": []
+        }
+      }
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 # @gsknnft/skill-ledger
 
+[![npm version](https://img.shields.io/npm/v/@gsknnft/skill-ledger)](https://www.npmjs.com/package/@gsknnft/skill-ledger)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue)](https://www.typescriptlang.org/)
+[![CI](https://github.com/gsknnft/sigilnet/actions/workflows/ci.yml/badge.svg)](https://github.com/gsknnft/sigilnet/actions/workflows/ci.yml)
+
 Manifest, inventory, and doctor utilities for agent `SKILL.md` installations.
 
 `skill-safe` answers: is this skill safe enough to install?
@@ -136,6 +141,29 @@ Remote checks are opt-in and use `fetch`. Core manifest and doctor operations
 are deterministic when `--check-remote` is not enabled.
 
 Pair with `@gsknnft/skill-safe` for scan reports and install decisions.
+
+## The Skill Suite
+
+`skill-ledger` is one layer in a broader ecosystem of composable skill governance packages.
+
+| Package | Responsibility |
+|---|---|
+| `@gsknnft/skill-safe` | **Scan / report / gate** — static pre-install scanner |
+| `@gsknnft/skill-ledger` | **Manifest / inventory / doctor** — what is installed (this package) |
+| `@gsknnft/skill-ui` | **Review workbench** — visual review of scan results and ledger state |
+| `@gsknnft/skill-safe-judge` | **Semantic review** — optional LLM review layer |
+| `@gsknnft/skill-safe-runtime` | **Runtime enforcement** — tool-call and trace policy |
+
+See [skill-safe docs/SKILL_SUITE.md](../skill-safe/docs/SKILL_SUITE.md) for canonical boundary definitions.
+
+## Known Limitations
+
+`skill-ledger` is inventory and audit tooling. It does not:
+
+- **Execute skills.** It records what has been scanned and installed, not what is safe to run.
+- **Make install decisions.** Install gates belong to `skill-safe`. The ledger records the decision.
+- **Verify content integrity in real time.** Remote drift checks are opt-in and best-effort.
+- **Prove provenance.** Source fields are recorded as-provided. Cryptographic signing is out of scope.
 
 ## Docs
 

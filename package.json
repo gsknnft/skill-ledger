@@ -64,6 +64,6 @@
     "author": "@gsknnft",
     "license": "MIT",
     "peerDependencies": {
-        "@gsknnft/skill-safe": "^0.3.0"
+        "@gsknnft/skill-safe": "^0.2.1"
     }
 }
